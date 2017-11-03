@@ -59,6 +59,7 @@ public class SMain extends javax.swing.JFrame {
     }
 
     public void clear(){
+        tableload();
         sid.setText("");
         doc.setSelectedItem("--Select Doctor");
         sd.setText("");
@@ -224,20 +225,21 @@ public class SMain extends javax.swing.JFrame {
                                         .addComponent(jButton2)
                                         .addGap(23, 23, 23))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(sd, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tm))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel6)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(sd, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(531, 531, 531)
                                         .addComponent(jButton4))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(jLabel5)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(tm))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel4)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(dte, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(dte, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -300,14 +302,7 @@ public class SMain extends javax.swing.JFrame {
     }//GEN-LAST:event_srchActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        tableload();
-        sid.setText("");
-        doc.setSelectedItem("--Select Doctor");
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        Date d = new Date();
-        dt = df.format(d); 
-        dte.setDate(d);
-        tm.setText("hh:mm:ss");
+        clear();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -335,12 +330,12 @@ public class SMain extends javax.swing.JFrame {
                     pst = con.prepareStatement(sql);
                     pst.execute();
                     JOptionPane.showMessageDialog(null, "Your update is Successful!");
-                    tableload();
                     clear();
                 }
                 catch(Exception e){
                     JOptionPane.showMessageDialog(null, "Your update is Failed!!!" + e);
                 }
+                clear();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -351,11 +346,11 @@ public class SMain extends javax.swing.JFrame {
                      pst = con.prepareStatement(sql);
                      pst.execute();
                      JOptionPane.showMessageDialog(null, "Your Request is Successful!");
-                     tableload();
                      clear();
                 }catch(Exception e){
                      JOptionPane.showMessageDialog(null, "Your Request is Failed!" + e);
                 }
+                clear();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

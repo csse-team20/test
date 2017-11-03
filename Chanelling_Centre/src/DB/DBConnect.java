@@ -18,7 +18,7 @@ public class DBConnect {
         
         try{
            Class.forName("com.mysql.jdbc.Driver"); 
-           conn = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3307/chanelling","root","root");
+           conn = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3307/channeling_center","root","root");
         }
         catch (Exception e){
             System.out.println(e);
